@@ -66,7 +66,7 @@ public with sharing class OpportunityHelper {
                 tsk.ActivityDate = Date.today().addDays(3); 
                 tasksToInsert.add(tsk);
             }
-            insert tasksToInsert;
+            Database.insert(tasksToInsert);
     }
 
     public static void updateDescriptionFromStage (List<Opportunity> newOppList, Map<Id, Opportunity> oldOppMap) {
@@ -82,7 +82,7 @@ public with sharing class OpportunityHelper {
             }
                             
         }
-        update oppsToUpdate;
+        Database.update(oppsToUpdate);
     }
 
     public static void notifyOwnersOpportunityDeleted (List<Opportunity> opps) {
@@ -141,6 +141,6 @@ public with sharing class OpportunityHelper {
                 oppIdToOppMap.put(opp.Id, oppToUpdate);
             }
         }
-        update oppIdToOppMap.values();
+        Database.update(oppIdToOppMap.values());
     }
 }
